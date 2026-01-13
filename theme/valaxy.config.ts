@@ -1,6 +1,33 @@
+import type { ResolvedValaxyOptions } from 'valaxy'
+import type { Plugin } from 'vite'
 import type { ThemeConfig } from './types'
+
 import { defineTheme } from 'valaxy'
-import { defaultThemeConfig, generateSafelist, themePlugin } from './node'
+import { defaultThemeConfig, generateSafelist } from './node'
+
+// write a vite plugin
+// https://vitejs.dev/guide/api-plugin.html
+function themePlugin(options: ResolvedValaxyOptions<ThemeConfig>): Plugin {
+  const themeConfig = options.config.themeConfig || {}
+
+  return {
+    name: 'valaxy-theme-Sasho',
+
+    config() {
+      return {
+        css: {
+          preprocessorOptions: {
+            scss: {
+              additionalData: `$c-primary: ${themeConfig.colors?.primary || '#0078E7'} !default;`,
+            },
+          },
+        },
+
+        valaxy: {},
+      }
+    },
+  }
+}
 
 export default defineTheme<ThemeConfig>((options) => {
   return {
@@ -9,7 +36,7 @@ export default defineTheme<ThemeConfig>((options) => {
       plugins: [themePlugin(options)],
     },
     unocss: {
-      safelist: generateSafelist(options.config.themeConfig as ThemeConfig),
+      safelist: generateSafelist(options),
     },
   }
 })

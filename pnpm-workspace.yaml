@@ -1,12 +1,20 @@
 catalogMode: prefer
+
 cleanupUnusedCatalogs: true
 
 shellEmulator: true
+
 trustPolicy: no-downgrade
+
+trustPolicyExclude:
+  - chokidar@4.0.3
+  - langium@3.3.1
+  - semver@6.3.1
 
 packages:
   - theme
   - demo
+
 catalog:
   '@antfu/eslint-config': ^6.4.2
   '@iconify-json/ant-design': ^1.2.5
@@ -15,6 +23,7 @@ catalog:
   bumpp: ^10.3.2
   eslint: ^9.39.1
   eslint-plugin-format: ^1.1.0
+  jinrishici: ^1.0.6
   typescript: ^5.9.3
   valaxy: ^0.26.10
   vitest: ^4.0.15

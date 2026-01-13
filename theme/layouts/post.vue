@@ -1,7 +1,7 @@
 <template>
   <Layout>
-    <StarterArticle>
+    <SashoArticle>
       <RouterView />
-    </StarterArticle>
+    </SashoArticle>
   </Layout>
 </template>

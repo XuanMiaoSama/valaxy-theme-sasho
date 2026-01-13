@@ -1,9 +1,5 @@
 @use 'valaxy/client/styles/mixins/index.scss' as *;
 
-// use common code styles, you also can override them or copy/modify them
-@use 'valaxy/client/styles/common/code.scss' as *;
-@use 'valaxy/client/styles/common/markdown.scss' as *;
-
 @use 'valaxy/client/styles/components/code.scss' as *;
 @use 'valaxy/client/styles/components/code-group.scss' as *;
 @use 'valaxy/client/styles/components/custom-block.scss' as *;
@@ -21,6 +17,8 @@ html.dark {
 .markdown-body {
   padding-top: 0.5rem;
   word-wrap: break-word;
+  font-family: var(--va-font-family-base);
+  line-height: 1.8;
 
   h1,
   h2,
@@ -29,41 +27,151 @@ html.dark {
   h5,
   h6 {
     font-family: var(--va-font-family-base);
-    font-weight: 900;
-  }
+    font-weight: 700;
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 
-  ul {
-    li > p {
-      margin-bottom: 0;
+    // Hide default anchor and style custom one if needed
+    .header-anchor {
+      float: none;
+      margin-left: 0.5rem;
+      opacity: 0.2;
+      text-decoration: none;
+      color: inherit;
+      font-size: 0.8em;
+
+      &:hover {
+        opacity: 1;
+        text-decoration: none;
+      }
     }
   }
 
-  blockquote {
-    margin: 16px 0;
-    border-left: 4px solid var(--va-c-divider);
-    padding-left: 12px;
-    transition: border-color 0.5s p {
-      margin: 0;
-      font-size: 16px;
-      color: var(--vp-c-text-2);
-      transition: color 0.5s;
-    }
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.25em;
   }
 
-  code:not(pre > code) {
-    color: var(--va-c-text-code);
-    background-color: var(--va-c-bg-mute);
-    padding: 3px 6px;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 0.85em;
+  // Style headers with pseudo prefix like "H1 ", "H2 "
+  // Note: This matches the image style where headers have a visual tag
+  h1::before {
+    content: 'H1';
+    margin-right: 0.5rem;
+    color: #e5e7eb;
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+  h2::before {
+    content: 'H2';
+    margin-right: 0.5rem;
+    color: #e5e7eb;
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+  h3::before {
+    content: 'H3';
+    margin-right: 0.5rem;
+    color: #e5e7eb;
+    font-size: 0.8em;
+    font-weight: normal;
 
-    &::before {
-      content: none;
+    // Anchor position adjustment to right (if desired, or inline as in most modern designs)
+    // The image shows # on the right side.
+    h1,
+    h2,
+    h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .header-anchor {
+        order: 2; // Move to end
+        margin-left: auto; // Push to right
+        font-size: 1rem;
+      }
     }
 
-    &::after {
-      content: none;
+    // Paragraphs
+    p {
+      margin-bottom: 1.2em;
+      color: var(--va-c-text);
+      text-align: justify;
+    }
+
+    // Ordered Lists
+    ol {
+      list-style: none;
+      counter-reset: ol-counter;
+      padding-left: 0.5rem;
+
+      li {
+        counter-increment: ol-counter;
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 0.5rem;
+
+        &::before {
+          content: counter(ol-counter);
+          position: absolute;
+          left: 0;
+          top: 0.2em;
+          width: 1.5rem;
+          height: 1.5rem;
+          background-color: #f43f5e; // Rose-500
+          color: white;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 1.5rem;
+          font-size: 0.85rem;
+          font-weight: bold;
+          box-shadow: 0 2px 4px rgba(244, 63, 94, 0.3);
+        }
+      }
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+
+      li > p {
+        margin-bottom: 0;
+      }
+    }
+
+    blockquote {
+      margin: 16px 0;
+      border-left: 4px solid var(--va-c-divider);
+      padding-left: 12px;
+      transition: border-color 0.5s;
+
+      p {
+        margin: 0;
+        font-size: 16px;
+        color: var(--vp-c-text-2);
+        transition: color 0.5s;
+      }
+    }
+
+    code:not(pre > code) {
+      color: #f43f5e;
+      background-color: rgba(244, 63, 94, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+      font-family: var(--va-font-family-mono);
+
+      &::before {
+        content: none;
+      }
+      &::after {
+        content: none;
+      }
     }
   }
 }

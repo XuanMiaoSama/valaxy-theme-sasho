@@ -1,5 +1,5 @@
 <template>
-  <StarterPostList />
+  <SashoPostList />
 </template>
 
 <route lang="yaml">

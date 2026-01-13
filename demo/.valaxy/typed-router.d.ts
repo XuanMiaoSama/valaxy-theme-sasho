@@ -58,6 +58,27 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/dynamic': RouteRecordInfo<
+      '/dynamic',
+      '/dynamic',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/guestbook': RouteRecordInfo<
+      '/guestbook',
+      '/guestbook',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/links': RouteRecordInfo<
+      '/links',
+      '/links',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/notes/': RouteRecordInfo<
       '/notes/',
       '/notes',
@@ -147,6 +168,24 @@ declare module 'vue-router/auto-routes' {
     'pages/categories/index.md': {
       routes:
         | '/categories/'
+      views:
+        | never
+    }
+    'pages/dynamic.md': {
+      routes:
+        | '/dynamic'
+      views:
+        | never
+    }
+    'pages/guestbook.md': {
+      routes:
+        | '/guestbook'
+      views:
+        | never
+    }
+    'pages/links.md': {
+      routes:
+        | '/links'
       views:
         | never
     }

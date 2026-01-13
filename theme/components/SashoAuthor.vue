@@ -13,15 +13,13 @@ defineProps<{
     </dt>
     <dd>
       <ul
-        class="flex justify-center xl:block space-x-8 sm:space-x-12 xl:space-x-0 xl:space-y-8"
-      >
+        class="flex justify-center xl:block space-x-8 sm:space-x-12 xl:space-x-0 xl:space-y-8">
         <li class="flex items-center space-x-2">
           <img
             v-if="frontmatter.gravatar"
             :src="`https://gravatar.com/avatar/${frontmatter.gravatar}`"
             alt="author image"
-            class="h-10 w-10 rounded-full"
-          >
+            class="h-10 w-10 rounded-full" />
           <dl class="whitespace-nowrap text-sm font-medium leading-5">
             <dt class="sr-only">
               Name
@@ -37,8 +35,7 @@ defineProps<{
                 :href="`https://twitter.com/${frontmatter.twitter}`"
                 target="_blank"
                 rel="noopnener noreferrer"
-                class="link"
-              >{{ frontmatter.twitter }}</a>
+                class="link">{{ frontmatter.twitter }}</a>
             </dd>
           </dl>
         </li>

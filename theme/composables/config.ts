@@ -1,11 +1,11 @@
 import type { ThemeConfig } from '../types'
-import { useConfig } from 'valaxy'
+import { useValaxyConfig } from 'valaxy'
 import { computed } from 'vue'
 
 /**
  * getThemeConfig
  */
 export function useThemeConfig<T = ThemeConfig>() {
-  const config = useConfig<T>()
+  const config = useValaxyConfig<T>()
   return computed(() => config!.value.themeConfig)
 }

@@ -84,7 +84,7 @@ export type UserThemeConfig = Partial<ThemeConfig>
 
 export interface NavItem {
   text: string
-  link: string
+  link?: string
   icon?: string
   items?: NavItem[]
 }

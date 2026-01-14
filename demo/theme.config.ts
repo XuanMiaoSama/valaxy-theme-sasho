@@ -62,12 +62,11 @@ export default defineThemeConfig({
     },
     {
       text: '关于',
-      link: '/about',
       icon: 'icon-about',
       items: [
         {
           text: '本人',
-          link: '/about/self',
+          link: '/about',
           icon: 'icon-wangzhanzhu',
         },
         {

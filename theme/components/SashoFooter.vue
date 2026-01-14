@@ -29,7 +29,7 @@ const icon = themeConfig.value.footer?.icon ?? 'icon-sakura'
         <span
           v-if="icon"
           :class="[icon, icon.startsWith('icon-') ? 'iconfont' : '']"
-          class="rotate inline-block text-size-18px c-rose-3"
+          class="rotate inline-block text-size-18px c-rose-300"
         />
         Powered by <a class="font-600 decoration-underline decoration-dotted" href="https://valaxy.site/">Valaxy</a></span>
     </div>
